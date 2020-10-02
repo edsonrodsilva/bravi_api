@@ -14,11 +14,11 @@ class CreateContactsTable extends Migration
     public function up()
     {
         Schema::create('contacts', function (Blueprint $table) {
-            $table->uuidMorphs('id');
-            $table->foreignId('person_id')->constrained('persons')->onDelete('cascade');
-            $table->integer('phone', 20);
+            $table->id();
+            $table->foreignId('person_id')->constrained('persons');
+            $table->integer('phone');
             $table->string('email')->unique();
-            $table->string('whatsapp', 20);
+            $table->integer('whatsapp');
             $table->timestamps();
         });
     }
@@ -30,7 +30,6 @@ class CreateContactsTable extends Migration
      */
     public function down()
     {
-        Schema::dropForeign('contacts_person_id_foreign');
         Schema::dropIfExists('contacts');
     }
 }
