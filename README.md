@@ -1,61 +1,56 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## API REST with Laravel
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Introdução
+Existem inumeras formas de deixar seu aplicativo com uma estrutura pronta para evolução, com funcionalidade comum de acesso a dados, fornecendo melhor capacidade de manutenção e desacoplando a infraestrutura ou tecnologia usada para acessar bancos de dados da camada de modelo de domínio.
 
-## About Laravel
+##Instruções de Instalação
+1. clone o projeto
+2. crie um banco de dados no mysql sugiro o nome people.
+3. configure o arquivo .env com as credenciar do banco de dados.
+4. rode as migrations para criar as tabelas.
+`php artisan migrate`
+5. rode o db:seed para popular as tabelas com dados faker.
+`php artisan db:seed`
+Test a API usando Insomnia ou Postman para acessar os recursos listados abaixo.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Repositoy Pattern
+Eu implementei o **Pattern Repository** para tornar o código mais estruturado.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Modelo do banco de dados
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Resumo das Etapas de contrução
+1. Criar Models
+2. Criar Factory
+3. Criar Seeders
+4. Controllers
+5. Trait - ResponseAPI
+Como as Traits são um mecanismo para reutilização de código em herança única vamos colocar alguns códigos reutilizáveis ​​para o aplicativo, para reduzir a criação da mesma função repetidamente. Neste caso, vamos criar funções para enviar a resposta JSON ao cliente.
 
-## Learning Laravel
+6. Create a validation Request
+If you using a Repository pattern, you not allowed to create a validation in a Controller or in the Repository itself, it must be separate.
+6. Interfaces
+Para descrever a classe quais método implementar.
+7. Repository
+8. Registering a new Provider
+## 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Resourses
+### People
+* Get All Person, method GET (api/persons).
+* Create New Person, method POST (api/persons).
+* Get Person By ID, method GET (api/persons/{id}).
+* Update Person, method PUT (api/persons/{id}).
+* Delete Person, method DELETE (api/persons/{id}).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Contact
+* Get All Contact, method GET (api/contacts).
+* Create New Contact, method POST (api/contacts).
+* Get Contact By ID, method GET (api/contacts/{id}).
+* Update Contact, method PUT (api/contacts/{id}).
+* Delete Contact, method DELETE (api/contacts/{id}).
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Conclusão 
+Com mais de 10 anos de experiência me fez ver o quanto é importante
+tornar seu código mais estruturado. Nunca escrever nenhuma lógica no controlador, está tudo bem se você precisar. Tornar o código mais reutilizável no futuro. Usando o Repository Pattern o código está mais estruturado a e mais sustentável mais facil de entender e manter.
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

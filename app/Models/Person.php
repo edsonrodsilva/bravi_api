@@ -11,4 +11,8 @@ class Person extends Model
 
     protected $table = 'persons';
     protected $fillable = ['name'];
+
+    public function contacts() {
+        $this->hasMany('App\Models\Contact', 'contacts_id');
+    }
 }
